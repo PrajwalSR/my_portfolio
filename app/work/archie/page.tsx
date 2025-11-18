@@ -558,29 +558,72 @@ export default function ArchieCaseStudy() {
             </div>
           </motion.div>
 
-          {/* Screenshot Placeholders */}
+          {/* Screenshot Gallery */}
           <motion.div
-            className="mt-12 space-y-8"
+            className="mt-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {[
-              'User Input Form',
-              'Executive Summary',
-              'System Architecture Diagram',
-              'Tech Stack Recommendations',
-              'Compliance Warnings',
-              'Cost Estimates'
-            ].map((caption, index) => (
-              <div key={caption} className="space-y-2">
-                <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg aspect-video flex items-center justify-center">
-                  <span className="text-text-secondary">Screenshot: {caption}</span>
-                </div>
-                <p className="text-sm text-text-secondary text-center">Figure {index + 1}: {caption}</p>
-              </div>
-            ))}
+            <h3 className="text-2xl font-bold text-text-primary mb-8">Product Screenshots</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: 'User Input Form',
+                  description: 'Simple interface for describing product ideas',
+                  file: 'archie-form.png'
+                },
+                {
+                  title: 'Executive Summary',
+                  description: 'High-level architecture overview',
+                  file: 'archie-summary.png'
+                },
+                {
+                  title: 'Compliance Warnings',
+                  description: 'Automatic GDPR detection and requirements',
+                  file: 'archie-compliance.png'
+                },
+                {
+                  title: 'System Architecture Diagram',
+                  description: 'Visual representation using Mermaid.js',
+                  file: 'archie-diagram.png'
+                },
+                {
+                  title: 'Tech Stack Recommendations',
+                  description: 'Detailed justifications for each choice',
+                  file: 'archie-techstack.png'
+                },
+                {
+                  title: 'Cost Estimates & Risks',
+                  description: 'Financial planning and gotchas',
+                  file: 'archie-costs.png'
+                }
+              ].map((screenshot, index) => (
+                <motion.div
+                  key={screenshot.title}
+                  className="space-y-3"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <a
+                    href={`/my_portfolio/images/${screenshot.file}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg aspect-video flex items-center justify-center hover:from-primary/30 hover:to-secondary/30 transition-all cursor-pointer shadow-lg hover:shadow-xl hover:shadow-primary/20">
+                      <span className="text-text-secondary text-sm">Click to view full size</span>
+                    </div>
+                  </a>
+                  <p className="text-sm text-text-secondary">
+                    <span className="font-semibold text-text-primary">Figure {index + 1}:</span> {screenshot.title} - {screenshot.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
