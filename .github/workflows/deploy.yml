@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ claude/dark-portfolio-setup-015R62LbQbHPTsDqTdB2GVbz ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
